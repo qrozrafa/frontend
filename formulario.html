@@ -1,0 +1,104 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/index-style.css">
+    <title>formulario</title>
+</head>
+<body>
+    <header id="home">
+        <div class="header">
+            <h1 class="title-logo">FrontEnd</h1>
+            
+
+            <div class="navegacao">
+                <nav>
+                    <ul class="menu">
+                        <li class="lista-menu"><a href="index.html" >Home</a></li>
+                        <li class="lista-menu"><a href="formulario.html" >Formulario</a></li>
+                        <li class="lista-menu"><a href="tabela.html" >Tabela</a></li>
+                        <li class="lista-menu"><a href="layout.html" >Layout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- main  - formulario-->
+    <section id="formulario">
+        <div class="container-formulario">
+
+            <h1 class="title-formulario">Contato</h1>
+				<p>Preencha os campos abaixo</p>
+
+				<form method="post">
+
+					<div class="form-info">
+						<label for="nome">Nome</label><br>
+						<input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+					</div>
+
+					<div class="form-info">
+						<label for="email">E-mail</label><br>
+						<input type="email" name="email" id="email" placeholder="Digite seu email">
+					</div>
+
+					<div class="form-text">
+						<label for="mensagem">Mensagem</label><br>
+						<textarea name="mensagem" id="mensagem" rows="5" placeholder="Digite sua mensagem"></textarea>
+					</div>
+
+                    <hr>
+                    <div class="list-op">
+                        <div id="pri-op">
+                            <p>
+                                <label>Qual linguagem você prefere?</label>
+                                <div class="input-op">
+                                    <input type="radio" name="linguagens" value="html"> HTML
+                                    <input type="radio" name="linguagens" value="css"> CSS
+                                    <input type="radio" name="linguagens" value="javascript"> JS
+                                </div>
+                            </p>
+                        </div>
+
+                        <div id="seg-op">
+                            <p>
+                                <label>Quais linguagens você sabe?</label>
+                                <div class="input-op">
+                                    <input type="checkbox" name="linguagens" value="html"> HTML
+                                    <input type="checkbox" name="linguagens" value="css"> CSS
+                                    <input type="checkbox" name="linguagens" value="javascript"> JS
+                                </div>
+                            </p>
+                        </div>
+
+                        <div id="ter-op">
+                            <label>Qual a sua cor favorita?</label>
+                            <select>
+                                <option value="Azul">Azul</option>
+                                <option value="Verde" selected>Verde</option>
+                                <option value="Vermelho" >Vermelho</option>
+                            </select>
+                        </div>
+
+                        <div class="botao-form">
+                            <input type="submit" >
+                        </div>
+                    </div>
+
+				</form>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Desenvolvido por Rafael Queiroz-modulo08</p>
+    </footer>
+
+    
+</body>
+</html>
