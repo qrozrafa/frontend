@@ -344,12 +344,10 @@ tfoot{
     border-radius: 32px;
     box-shadow: 7px 7px #0abbe360;
     transition: 0.5s;
-    filter: brightness(80%);
 }
 
 .info-layout > a > img:hover{
     box-shadow: 7px 7px #0abde3;
-    filter: brightness(100%);
 }
 
 /* footer */
@@ -363,6 +361,17 @@ footer {
     font-weight: bold;
     position: relative;
     font-family: 'Montserrat', sans-serif;
+}
+
+
+@media(max-width: 500px){
+    .box-img img{
+    width: 100%;
+    }
+
+    .box-img > a > img{
+       filter: brightness(100%);
+    }
 }
 
 /* media query */
