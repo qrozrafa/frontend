@@ -6,7 +6,7 @@
     --error: #ff7675;
     --sucess: #55efc4;
     --button-active:#6b6b6b;
-    --button-active-alt:#6b6b6b46;
+    --button-active-alt:#fdcb6e;
     --first-shadow:#ffffff;
     --first-shadow-alt: rgba(0,0,0,.16);
 }
@@ -61,15 +61,6 @@ input{
     color: var(--text-color);
     font-size: 50px;
     padding: 20px;
-}
-
-.form-control label {
-    display: inline-block;
-    margin-bottom: 5px;
-    color: var(--text-color);
-}
-
-.form-control input {
     outline: 0;
 
     display: block;
@@ -79,6 +70,15 @@ input{
     width: 100%;
     padding: 15px;
 }
+.input1{
+   margin-bottom: 15px; 
+}
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
 
 .form-control.success input {
     border: 3px solid var(--sucess);
@@ -136,4 +136,13 @@ input{
 .form button:hover {
     background-color: var(--button-active-alt);
     transition: 0.3s;
+}
+.mensagem{
+    margin-top: 25px;
+    color: var(--error);
+}
+
+#resultado{
+    margin-top: 15px;
+    text-align: center;
 }
