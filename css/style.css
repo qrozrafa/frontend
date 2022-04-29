@@ -139,10 +139,13 @@ input{
 }
 .mensagem{
     margin-top: 25px;
+    text-align: center;
     color: var(--error);
 }
 
-#resultado{
-    margin-top: 15px;
-    text-align: center;
+
+
+.erro {
+    box-shadow: inset -5px -5px 12px var(--first-shadow),
+                inset 5px 5px 12px var(--error);
 }

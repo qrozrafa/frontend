@@ -1,109 +1,89 @@
-const form = document.getElementById('form')
-const username = document.getElementById('username')
-const email = document.getElementById('email')
-const fone = document.getElementById('fone')
-const cep = document.getElementById('cep')
-const cidade = document.getElementById('cidade')
-const uf = document.getElementById('uf')
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-
-    checkInputs()
-})
-
-function checkInputs() {
-
-    // removendo o espaços do inicio e fim da string
-    const usernameValue = username.value.trim()
-    const emailValue = email.value.trim()
-    const foneValue = fone.value.trim()
-    const cepValue = cep.value.trim()
-    const cidadeValue = cidade.value.trim()
-    const ufValue = uf.value.trim()
-    
-
-    if(usernameValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(username, 'Preencha esse campo')
-    } else {
-        // adicionar a classe de sucesso
-        setSuccessFor(username)
-    }
-
-    if(emailValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(email, 'Preencha esse campo')
-    } else if (!isEmail(emailValue)) {
-        setErrorFor(email, 'Email inválido')
-    } else {
-        // adicionar a classe de sucesso
-        setSuccessFor(email)
-    }
+const input = document.getElementsByTagName('input')
 
 
-    if(foneValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(fone, 'Preencha esse campo')
-    } else {
-        // adicionar a classe de sucesso
-        setSuccessFor(fone)
-    }
 
-    if(cepValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(cep, 'Preencha esse campo')
-    } else if(cepValue.length != 9){
-        setErrorFor(cep, 'Cep deve ter 9 caracteres (0000-000)')
-    } 
-    else {
-        // adicionar a classe de sucesso
-        setSuccessFor(cep)
-    }
+function validaCampo(elemento){
 
-    if(cidadeValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(cidade, 'Preencha esse campo')
-    } else {
-        // adicionar a classe de sucesso
-        setSuccessFor(cidade)
-    }
+    elemento.addEventListener('focusout', function(event) {
 
-    if(ufValue === '') {
-        // mostrar erro
-        // add classe
-        setErrorFor(uf, 'Preencha esse campo')
-    } else {
-        // adicionar a classe de sucesso
-        setSuccessFor(uf)
-    }
+        event.preventDefault();
+
+        if(this.value == ""){
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            input.classList.add('erro');
+            return false;
+        } else {
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            input.classList.remove('erro');
+        }
+
+    });
 
 }
 
-// function mensagem de erro
-function setErrorFor(input, message) {
-    const formControl = input.parentElement;
-    const small = formControl.querySelector('small')
+function validaCampoNumerico(elemento){
 
-    small.innerText = message
+    elemento.addEventListener('focusout', function(event) {
 
-    formControl.className = 'form-control error'
+        event.preventDefault();
+
+        let numero = this.value.match(/^[\d]5-[\d]3/) ? this.value.replace(/-/, "") : this.value; 
+
+        if(numero != "" && numero.match(/[0-9]*/) && numero.length >= 8 && numero.length <=12){
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            input.classList.remove('erro');
+        } else {
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            input.classList.add('erro');
+            return false;
+        }
+
+    });
+
 }
 
-//function mensagem de sucesso
-function setSuccessFor(input) {
-    const formControl = input.parentElement;
+function validaEmail(elemento){
 
-    formControl.className = 'form-control success'
+    elemento.addEventListener('focusout', function(event) {
+
+        event.preventDefault();
+
+        const emailValido = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?/i;
+        if(this.value.match(emailValido)) {
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            input.classList.remove('erro');
+        } else {
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            input.classList.add('erro');
+            return false;
+        }
+
+    });
+
 }
 
-// typeof Email
-function isEmail(email) {
-    return /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email)
+let camposObrigatorios = document.querySelectorAll('input.obrigatorio');
+let camposNumericos = document.querySelectorAll('input.numero');
+let camposEmail = document.querySelectorAll('input.email');
+
+
+for( let emFoco of camposObrigatorios) {
+    validaCampo(emFoco);
 }
+
+for( let emFoco of camposNumericos) {
+    validaCampoNumerico(emFoco);
+}
+
+for( let emFoco of camposEmail) {
+    validaEmail(emFoco);
+}
+
+
 
