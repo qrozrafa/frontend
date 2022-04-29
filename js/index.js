@@ -86,4 +86,8 @@ for( let emFoco of camposEmail) {
 }
 
 
+// alert submit
+function show_alert() {
+    alert("cadastro com sucesso :)");
+  }
 
