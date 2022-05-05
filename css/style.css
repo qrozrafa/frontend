@@ -149,3 +149,14 @@ input{
     box-shadow: inset -5px -5px 12px var(--first-shadow),
                 inset 5px 5px 12px var(--error);
 }
+
+.sucess{
+    box-shadow: inset -5px -5px 12px var(--first-shadow),
+    inset 5px 5px 12px var(--sucess);      
+}
+
+.mensagemSucess{
+    margin-top: 25px;
+    text-align: center;
+    color: var(--sucess);
+}

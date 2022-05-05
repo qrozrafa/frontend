@@ -15,6 +15,8 @@
         <div class="header">
             <h2>Faça seu cadastro</h2>
             <div class="mensagem"></div>
+            <div class="mensagemSucess"></div>
+
         </div>
         <form class="form" id="form">
 
@@ -30,12 +32,12 @@
 
             <div class="form-control">
                 <label>Telefone</label>
-                <input type="text" class="numero" id="fone">
+                <input type="text" class="numero" id="fone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
 
             <div class="form-control">
                 <label>CEP</label>
-                <input type="text" class="numero" id="cep">
+                <input type="text" class="numero" id="cep" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
             </div>
 
             <div class="form-control">
@@ -48,7 +50,7 @@
                 <input type="text" class="obrigatorio" id="uf">
             </div>
 
-            <button type="submit" onclick="show_alert();" >ENVIAR</button>
+            <button type="submit" onclick="validar()" >ENVIAR</button>
         </form>
 
     </div>
